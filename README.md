@@ -6,9 +6,13 @@
 [![dm-image]][npm-url]
 [![dt-image]][npm-url]
 
-> VuePress 微信公众号导流插件，将免费的公众号导流工具整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量导流到公众号，达到涨粉丝数的目的。
+> VuePress v1 微信公众号导流插件，将免费的公众号导流工具整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量导流到公众号，达到涨粉丝数的目的。
 
-## 特色
+## 兼容性
+
+本插件只支持 VuePress v1，如果你使用的 VuePress v2，请安装 [vuepress-plugin-readmore-popular-next](https://github.com/rqh656418510/vuepress-plugin-readmore-popular-next) 插件。
+
+## 特色功能
 
 - [x] 支持随机为博客添加导流功能
 - [x] 支持查询用户解锁阅读文章的历史记录
@@ -59,7 +63,7 @@ module.exports = {
       keyword: 'Tech',                    
       // 已申请的微信公众号二维码链接
       qrcode: 'https://www.techgrow.cn/img/wx_mp_qr.png',
-      // 文章内容选择器，若使用的不是官方默认主题，则需要根据第三方的主题来设置（可选）
+      // 文章内容的选择器，若使用的不是官方默认主题，则需要根据第三方的主题来设置（可选）
       selector: 'div.theme-default-content',
       // CDN 加速链接（可选）
       libUrl: 'https://qiniu.techgrow.cn/js/readmore.js',
