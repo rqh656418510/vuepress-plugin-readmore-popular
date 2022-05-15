@@ -8,10 +8,6 @@
 
 > VuePress v1 微信公众号导流插件，将免费的公众号导流工具整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量导流到公众号，达到涨粉丝数的目的。
 
-## 兼容性
-
-本插件只支持 VuePress v1，如果你使用的 VuePress v2，请安装 [vuepress-plugin-readmore-popular-next](https://github.com/rqh656418510/vuepress-plugin-readmore-popular-next) 插件。
-
 ## 特色功能
 
 - [x] 支持随机为博客添加导流功能
@@ -71,7 +67,7 @@ module.exports = {
       libUrl: 'https://qiniu.techgrow.cn/readmore/dist/readmore.js',
       // 自定义的 CSS 资源链接，可用于适配不同风格的博客（可选）
       cssUrl: 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css',
-      // 每篇文章随机添加微信公众号导流工具的概率，有效范围在 0.1 ~ 1 之间，1 则表示所有文章默认都自动添加导流工具（可选）
+      // 每篇文章随机添加导流工具的概率，有效范围在 0.1 ~ 1 之间，1 则表示所有文章默认都自动添加导流工具（可选）
       random: 1,
       // 排除添加导流工具的文章链接，格式为 ['/webpack', '/gulp/*', '/node/*/io']，支持使用路径、通配符、正则表达式的匹配规则（可选）
       excludes: []
@@ -92,7 +88,7 @@ module.exports = {
 
 ## 取消阅读限制
 
-若希望关闭部分文章的微信公众号导流功能，可以使用插件的 `excludes` 参数来配置。值得一提的是，`excludes` 参数的值是一个数组，其中的数组元素可以是字符串或者正则表达式。
+若希望关闭部分文章的微信公众号导流功能，可以使用插件的 `excludes` 参数来实现。值得一提的是，`excludes` 参数的值是一个数组，其中的数组元素可以是字符串或者正则表达式。
 
 - 根据 URL，关闭某篇文章的导流功能
 
@@ -130,6 +126,10 @@ module.exports = {
   ]
 }
 ```
+
+## 兼容性
+
+本插件只支持 VuePress v1，暂时不支持 VuePress v2。
 
 ## 开发计划
 
