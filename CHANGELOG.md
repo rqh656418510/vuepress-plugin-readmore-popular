@@ -2,11 +2,21 @@
 
 ### Version
 
+- 0.0.5
+
+### Features
+
+- optimize exclude post links
+
+# (2022-05-16)
+
+### Version
+
 - 0.0.4
 
 ### Features
 
-- support exclude post link
+- support exclude post links
 
 # (2022-05-15)
 
