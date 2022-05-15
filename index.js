@@ -15,7 +15,8 @@ module.exports = (options = {}, context) => ({
     LOCK_TOC: options.lockToc || 'yes',
     SELECTOR: options.selector || 'div.theme-default-content',
     LIB_URL: options.libUrl || 'https://qiniu.techgrow.cn/readmore/dist/readmore.js',
-    CSS_URL: options.cssUrl || 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css'
+    CSS_URL: options.cssUrl || 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css',
+    EXCLUDES: options.excludes || []
   },
 
   // 定义指向 mixin 文件的路径，控制根组件的生命周期
