@@ -82,18 +82,20 @@ module.exports = {
 }
 ```
 
-| 参数     | 必填 | 默认值                                               |
-| -------- | ---- | ---------------------------------------------------- |
-| blogId   | 是   |                                                      |
-| name     | 是   |                                                      |
-| keyword  | 是   |                                                      |
-| qrcode   | 是   |                                                      |
-| selector | 否   | div.theme-default-content                            |
-| libUrl   | 否   | https://qiniu.techgrow.cn/readmore/dist/readmore.js  |
-| cssUrl   | 否   | https://qiniu.techgrow.cn/readmore/dist/vuepress.css |
-| excludes | 否   | { strExp: [ ], regExp: [ ] }                         |
-| reverse  | 否   | false                                                |
-| random   | 否   | 1                                                    |
+## 插件参数说明
+
+| 参数     | 类型        | 必填 | 默认值                                               | 说明 |
+| -------- | ----------- | ---- | ---------------------------------------------------- | ---- |
+| blogId   | String      | 是   | 无                                                   | -    |
+| name     | String      | 是   | 无                                                   | -    |
+| keyword  | String      | 是   | 无                                                   | -    |
+| qrcode   | String      | 是   | 无                                                   | -    |
+| selector | String      | 否   | div.theme-default-content                            | -    |
+| libUrl   | String      | 否   | https://qiniu.techgrow.cn/readmore/dist/readmore.js  | -    |
+| cssUrl   | String      | 否   | https://qiniu.techgrow.cn/readmore/dist/vuepress.css | -    |
+| excludes | Json Object | 否   | { strExp: [ ], regExp: [ ] }                         | -    |
+| reverse  | Boolean     | 否   | false                                                | -    |
+| random   | Number      | 否   | 1                                                    | -    |
 
 ## 验证插件效果
 
