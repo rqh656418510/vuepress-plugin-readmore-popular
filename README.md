@@ -8,6 +8,10 @@
 
 > VuePress v1 微信公众号导流插件，将免费的公众号导流工具整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量导流到公众号，达到涨粉丝数的目的。
 
+## 文档
+
+- [中文文档](https://docs.techgrow.cn/v1/wechat/vuepress/)
+
 ## 特色功能
 
 - [x] 支持随机为博客添加导流功能
@@ -90,7 +94,7 @@ module.exports = {
 
 若希望关闭部分文章的微信公众号导流功能，可以使用插件的 `excludes` 参数来实现。值得一提的是，`excludes` 参数的值是一个数组，其中的数组元素可以是字符串或者正则表达式。
 
-- 根据 URL，关闭某篇文章的导流功能
+- 根据 URL 路径，关闭某篇文章的导流功能
 
 ``` js
 module.exports = {
@@ -116,20 +120,28 @@ module.exports = {
 
 - 根据 URL 正则表达式，关闭符合规则的所有文章的导流功能
 
-
 ``` js
 module.exports = {
   plugins: [
     ['vuepress-plugin-readmore-popular', {
-      excludes: [/\/messages\/.+?\/participants/]
+      excludes: [/\/fontend\/.+?\/note/]
     }]
   ]
 }
 ```
 
-## 兼容性
+## 自定义样式
 
-本插件只支持 VuePress v1，暂时不支持 VuePress v2。
+插件默认使用了定义在 [vuepress.css](https://qiniu.techgrow.cn/readmore/dist/vuepress.css) 的 CSS 样式，你可以使用以下两种方式自定义自己的样式：
+
+- 第一种方式：更改博客主题的 CSS 源码文件，将自定义的 CSS 样式添加到里面
+- 第二种方式：创建独立的 CSS 文件，并将其存放在自己的博客里，同时通过插件的 `cssUrl` 配置参数来指定其访问的 URL 路径
+
+> 提示：为了方便日后维护，强烈建议使用第二种方式来添加自定义样式
+
+## 周边生态
+
+- [Hexo 导流插件](https://github.com/rqh656418510/hexo-readmore)
 
 ## 开发计划
 
