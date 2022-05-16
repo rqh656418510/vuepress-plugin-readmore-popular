@@ -65,20 +65,35 @@ module.exports = {
       keyword: 'Tech',                    
       // 已申请的微信公众号二维码链接
       qrcode: 'https://www.techgrow.cn/img/wx_mp_qr.png',
-      // 文章内容的选择器，若使用的不是官方默认主题，则需要根据第三方的主题来设置（可选）
+      // 文章内容的选择器，若使用的不是官方默认主题，则需要根据第三方的主题来设置
       selector: 'div.theme-default-content',
-      // 自定义的 JS 资源链接，可用于 CDN 加速（可选）
+      // 自定义的 JS 资源链接，可用于 CDN 加速
       libUrl: 'https://qiniu.techgrow.cn/readmore/dist/readmore.js',
-      // 自定义的 CSS 资源链接，可用于适配不同风格的博客（可选）
+      // 自定义的 CSS 资源链接，可用于适配不同风格的博客
       cssUrl: 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css',
-      // 每篇文章随机添加导流工具的概率，有效范围在 0.1 ~ 1 之间，1 则表示所有文章默认都自动添加导流工具（可选）
-      random: 1,
-      // 排除添加导流工具的文章链接，格式为 ['/webpack', '/gulp/*', '/node/*/io']，支持使用路径、通配符、正则表达式的匹配规则（可选）
-      excludes: []
+      // 文章排除添加导流工具的URL规则，支持使用路径、通配符、正则表达式的匹配规则
+      excludes: { strExp: [], regExp: [] },
+      // 是否反转排除规则的配置，即只有符合排除规则的文章才会添加导流工具
+      reverse: false,
+      // 每篇文章随机添加导流工具的概率，有效范围在 0.1 ~ 1 之间，1 则表示所有文章默认都自动添加导流工具
+      random: 1
     }]
   ]
 }
 ```
+
+| 参数     | 必填 | 默认值                                               |
+| -------- | ---- | ---------------------------------------------------- |
+| blogId   | 是   |                                                      |
+| name     | 是   |                                                      |
+| keyword  | 是   |                                                      |
+| qrcode   | 是   |                                                      |
+| selector | 否   | div.theme-default-content                            |
+| libUrl   | 否   | https://qiniu.techgrow.cn/readmore/dist/readmore.js  |
+| cssUrl   | 否   | https://qiniu.techgrow.cn/readmore/dist/vuepress.css |
+| excludes | 否   | { strExp: [ ], regExp: [ ] }                         |
+| reverse  | 否   | false                                                |
+| random   | 否   | 1                                                    |
 
 ## 验证插件效果
 
@@ -92,7 +107,7 @@ module.exports = {
 
 ## 取消阅读限制
 
-若希望关闭部分文章的微信公众号导流功能，可以使用插件的 `excludes` 参数来实现。值得一提的是，`excludes` 参数的值是一个数组，其中的数组元素可以是字符串或者正则表达式。
+若希望关闭部分文章的微信公众号导流功能，可以使用插件的 `excludes` 参数来实现。值得一提的是，`excludes` 的参数值是一个 JSON 对象，其中的 `strExp` 属性是路径和通配符规则的字符串数组，而 `regExp` 属性是正则表达式的字符串数组。
 
 - 根据 URL 路径，关闭某篇文章的导流功能
 
@@ -100,7 +115,8 @@ module.exports = {
 module.exports = {
   plugins: [
     ['vuepress-plugin-readmore-popular', {
-      excludes: ['/fontend/webpack']
+      // 排除 URL 为 `/fontend/webpack` 的文章
+      excludes: { strExp: ['/fontend/webpack'] },
     }]
   ]
 }
@@ -112,7 +128,9 @@ module.exports = {
 module.exports = {
   plugins: [
     ['vuepress-plugin-readmore-popular', {
-      excludes: ['/fontend/*', '/backend/*/io']
+      // 排除 URL 以 `/fontend` 开头的文章
+      // 排除 URL 为 `/backend/python/io` 的文章
+      excludes: { strExp: ['/fontend/*', '/backend/*/io'] },
     }]
   ]
 }
@@ -120,15 +138,33 @@ module.exports = {
 
 - 根据 URL 正则表达式，关闭符合规则的所有文章的导流功能
 
+
 ``` js
 module.exports = {
   plugins: [
     ['vuepress-plugin-readmore-popular', {
-      excludes: [/\/fontend\/.+?\/note/]
+      // 排除 URL 不以 `/fontend` 开头的文章
+      excludes: { regExp: ['^(?!\/fontend).*'] },
     }]
   ]
 }
 ```
+
+- 混合使用
+
+``` js
+module.exports = {
+  plugins: [
+    ['vuepress-plugin-readmore-popular', {
+      excludes: { strExp: ['/webpack', '/fontend/*', '/backend/*/io'], regExp: ['^(?!\/php).*'] },
+    }]
+  ]
+}
+```
+
+- 文章 URL 优先匹配 `strExp` 规则，然后再匹配 `regExp` 规则
+- 文章 URL 一旦满足 `strExp` 规则，则不会再匹配 `regExp` 规则
+- 如果希望符合规则的文章才添加导流工具，则可以使用 `reverse : true` 配置参数实现
 
 ## 自定义样式
 

@@ -1,3 +1,13 @@
+# (2022-05-17)
+
+### Version
+
+- 0.0.6
+
+### Features
+
+- fix exclude post links by regexp
+
 # (2022-05-16)
 
 ### Version
