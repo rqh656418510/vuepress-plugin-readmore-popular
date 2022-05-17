@@ -17,7 +17,8 @@ module.exports = (options = {}, context) => ({
     LIB_URL: options.libUrl || 'https://qiniu.techgrow.cn/readmore/dist/readmore.js',
     CSS_URL: options.cssUrl || 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css',
     EXCLUDES: options.excludes || { strExp: [], regExp: [] },
-    REVERSE: options.reverse || false
+    REVERSE: options.reverse || false,
+    TYPE: 'vuepress'
   },
 
   // 定义指向 mixin 文件的路径，控制根组件的生命周期

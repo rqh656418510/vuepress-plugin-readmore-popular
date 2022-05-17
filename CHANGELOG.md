@@ -2,6 +2,16 @@
 
 ### Version
 
+- 0.0.7
+
+### Features
+
+- add type option
+
+# (2022-05-17)
+
+### Version
+
 - 0.0.6
 
 ### Features
