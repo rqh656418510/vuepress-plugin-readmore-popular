@@ -193,11 +193,12 @@ module.exports = {
 
 ## 常见问题
 
-- [VuePress 引流](https://docs.techgrow.cn/v1/wechat/vuepress/#常见问题)
+- [VuePress v1.x 引流问题](https://docs.techgrow.cn/v1/wechat/vuepress/#常见问题)
 
 ## 周边生态
 
 - [Hexo 引流插件](https://github.com/rqh656418510/hexo-readmore)
+- [VuePress v2.x 引流插件](https://github.com/rqh656418510/vuepress-plugin-readmore-popular-next)
 
 ## 开发计划
 
