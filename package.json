@@ -26,6 +26,7 @@
     "url": "https://github.com/rqh656418510/vuepress-plugin-readmore-popular/issues"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "node-match-path": "^0.6.3",
     "q": "^1.5.1"
   }
