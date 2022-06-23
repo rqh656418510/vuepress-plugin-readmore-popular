@@ -24,6 +24,7 @@ module.exports = (options = {}, context) => {
       CSS_URL: options.cssUrl || 'https://qiniu.techgrow.cn/readmore/dist/vuepress.css',
       EXCLUDES: options.excludes || { strExp: [], regExp: [] },
       REVERSE: options.reverse || false,
+      INTERVAL: options.interval || 60,
       EXPIRES: options.expires || 365,
       TYPE: 'vuepress'
     },
