@@ -26,6 +26,7 @@ module.exports = (options = {}, context) => {
       REVERSE: options.reverse || false,
       INTERVAL: options.interval || 60,
       EXPIRES: options.expires || 365,
+      HEIGHT: options.height || 'auto',
       TYPE: 'vuepress'
     },
 
