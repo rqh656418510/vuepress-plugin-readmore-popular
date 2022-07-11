@@ -4,7 +4,7 @@
 
 - 0.0.13
 
-### Features
+### Fix
 
 - fix repeat invoke init function for readmore.js
 
