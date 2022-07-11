@@ -2,6 +2,16 @@
 
 ### Version
 
+- 0.0.14
+
+### Fix
+
+- fix sometime not found dom element
+
+# (2022-07-11)
+
+### Version
+
 - 0.0.13
 
 ### Fix
