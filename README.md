@@ -200,7 +200,7 @@ module.exports = {
 
 ## 常见问题
 
-- [VuePress 1 引流问题](https://docs.techgrow.cn/v1/wechat/vuepress/#常见问题)
+- [VuePress 1 引流问题](https://docs.techgrow.cn/v1/wechat/tutorial/vuepress/#常见问题)
 
 ## 周边生态
 
