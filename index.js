@@ -27,7 +27,8 @@ module.exports = (options = {}, context) => {
       INTERVAL: options.interval || 60,
       EXPIRES: options.expires || 365,
       HEIGHT: options.height || 'auto',
-      TYPE: 'vuepress'
+      TYPE: 'vuepress',
+      BASEURL: options.baseUrl || ''
     },
 
     // 定义指向 mixin 文件的路径，控制根组件的生命周期

@@ -19,6 +19,7 @@
 - [x] 支持查询用户解锁文章的历史记录
 - [x] 支持自定义或者动态计算文章内容的预览高度
 - [x] 支持自定义 CSS 样式，轻松适配不同风格的博客
+- [x] 支持开放 API，灵活接入第三方私有化部署的应用服务
 
 ## 注册博客
 
@@ -197,6 +198,10 @@ module.exports = {
 - 第二种方式：根据 [vuepress.css](https://qiniu.techgrow.cn/readmore/dist/vuepress.css) 创建自己的 CSS 文件（完整的），并将其存放在自己的博客里，同时通过插件的 `cssUrl` 配置参数来指定其访问的 URL 路径
 
 > 提示：为了方便日后维护，强烈建议使用第二种方式来添加自定义样式
+
+## 开放 API
+
+若不希望依赖 TechGrow 官方提供的系统服务，可以选择使用开放 API 的方式，让引流插件直接使用私有化部署的后端应用服务，详细教程请阅读[官方文档](https://docs.techgrow.cn/v1/wechat/openapi/api/)。
 
 ## 常见问题
 
