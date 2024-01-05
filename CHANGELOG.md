@@ -1,3 +1,17 @@
+# (2024-01-05)
+
+### Version
+
+- 0.0.17
+
+### Fix
+
+- fix sometime not found dom element
+
+### Features
+
+- add waitDomMills option
+
 # (2023-07-24)
 
 ### Version

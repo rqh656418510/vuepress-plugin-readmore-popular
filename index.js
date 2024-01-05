@@ -29,11 +29,13 @@ module.exports = (options = {}, context) => {
       HEIGHT: options.height || 'auto',
       TYPE: 'vuepress',
       BASEURL: options.baseUrl || '',
-      ALLOW_MOBILE: options.allowMobile || false
+      ALLOW_MOBILE: options.allowMobile || false,
+      WAIT_DOM_MILLS: options.waitDomMills || 1000
     },
 
     // 定义指向 mixin 文件的路径，控制根组件的生命周期
     clientRootMixin: resolve(__dirname, './lib/clientRootMixin.js')
 
   };
+  
 };
