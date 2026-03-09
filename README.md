@@ -6,7 +6,7 @@
 [![dm-image]][npm-url]
 [![dt-image]][npm-url]
 
-> VuePress v1 微信公众号引流插件，将免费的公众号引流工具整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量引流到公众号，达到涨粉丝数的目的。
+> **本项目仅供学习和研究用途**。Hexo 微信公众号引流插件，将公众号引流功能整合到博客中，用户扫码关注公众号后才可以解锁文章，从而将博客流量引流到公众号，达到涨粉丝数的目的。
 
 ## 文档
 
@@ -14,12 +14,14 @@
 
 ## 特色功能
 
-- [x] 支持随机为博客添加引流功能
-- [x] 支持关闭某篇文章的引流功能
-- [x] 支持查询用户解锁文章的历史记录
-- [x] 支持自定义或者动态计算文章内容的预览高度
-- [x] 支持自定义 CSS 样式，轻松适配不同风格的博客
-- [x] 支持开放 API，灵活接入第三方私有化部署的应用服务
+- 兼容主流的 VuePress 主题
+- 支持随机为博客添加引流功能
+- 支持关闭某篇文章的引流功能
+- 支持微信公众号验证码解锁文章
+- 支持查询用户解锁文章的历史记录
+- 支持自定义或者动态计算文章内容的预览高度
+- 支持自定义 CSS 样式，轻松适配不同风格的博客
+- 支持开放 API，灵活接入第三方私有化部署的系统服务
 
 ## 注册博客
 
@@ -87,8 +89,8 @@ module.exports = {
       interval: 60,
       // 等待 DOM 节点加载完成的时间（毫秒），如果部分页面的引流功能无法生效，可适当增大此参数的值
       waitDomMills: 1000,
-      // 每篇文章随机添加引流工具的概率，有效范围在 0.1 ~ 1 之间，1 则表示所有文章默认都自动添加引流工具
-      random: 1
+      // 每篇文章随机添加引流工具的概率，范围在 0.1 ~ 1.0 之间，代表 10% ~ 100%，其中 1.0 表示所有文章默认都添加引流工具
+      random: 1.0
     }]
   ]
 }
@@ -112,9 +114,9 @@ module.exports = {
 | expires      | Number          | 否   | `365`                                                | -    |
 | interval     | Number          | 否   | `60`                                                 | -    |
 | waitDomMills | Number          | 否   | `1000`                                               | -    |
-| random       | Number          | 否   | `1`                                                  | -    |
+| random       | Number          | 否   | `1.0`                                                | -    |
 
-`selector` 参数的作用是指定 JS 选择器来获取文章的主体内容，若 VuePress 使用了第三方主题，则一般需要根据第三方主题来配置该参数，否则可能会导致引流工具无法生效。其中 VuePress 不同主题的配置示例如下：
+`selector` 参数的作用是指定 JS 选择器来获取文章的主体内容，若 VuePress 使用了第三方主题，则通常需要根据第三方主题来配置该参数，否则可能会导致引流工具无法生效。其中 VuePress 不同主题的配置示例如下（特别注意，随着主题的迭代开发，以下配置可能会过时失效，请根据最新的主题代码来配置）：
 
 | 主题                                                                                              | 插件配置                                | 备注         |
 | ------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------ |
@@ -168,13 +170,12 @@ module.exports = {
 
 - 根据 URL 正则表达式，关闭符合规则的所有文章的引流功能
 
-
 ``` js
 module.exports = {
   plugins: [
     ['vuepress-plugin-readmore-popular', {
-      // 排除 URL 不以 `/fontend` 开头的文章
-      excludes: { regExp: ['^(?!\/fontend).*'] },
+      // 排除 URL 不以 `/php` 开头的文章
+      excludes: { regExp: ['^(?!\/php).*'] },
     }]
   ]
 }
@@ -196,6 +197,10 @@ module.exports = {
 - 文章 URL 一旦满足 `strExp` 规则，则不会再匹配 `regExp` 规则
 - 如果希望符合 URL 排除规则的文章才添加引流工具，则可以使用 `reverse : true` 配置参数实现
 
+## 开放 API 支持
+
+若不希望依赖 TechGrow 官方提供的系统服务，可以选择使用开放 API 的方式，让引流插件直接使用私有化部署的后端系统服务，详细教程请阅读[官方文档](https://docs.techgrow.cn/v1/wechat/openapi/api/)。
+
 ## 自定义样式
 
 插件默认使用了定义在 [vuepress.css](https://qiniu.techgrow.cn/readmore/dist/vuepress.css) 的 CSS 样式，你可以使用以下两种方式自定义自己的样式：
@@ -205,9 +210,14 @@ module.exports = {
 
 > 提示：为了方便日后维护，强烈建议使用第二种方式来添加自定义样式
 
-## 开放 API
+## 已兼容主题
 
-若不希望依赖 TechGrow 官方提供的系统服务，可以选择使用开放 API 的方式，让引流插件直接使用私有化部署的后端应用服务，详细教程请阅读[官方文档](https://docs.techgrow.cn/v1/wechat/openapi/api/)。
+| 主题                  | GitHub 仓库                                                                                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| @vuepress/theme-vue   | [https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-vue) |
+| vuepress-theme-reco   | [https://github.com/vuepress-reco/vuepress-theme-reco-1.x](https://github.com/vuepress-reco/vuepress-theme-reco-1.x)                                     |
+| vuepress-theme-hope   | [https://github.com/vuepress-theme-hope/vuepress-theme-hope-v1](https://github.com/vuepress-theme-hope/vuepress-theme-hope-v1)                           |
+| vuepress-theme-vdoing | [https://github.com/xugaoyi/vuepress-theme-vdoing](https://github.com/xugaoyi/vuepress-theme-vdoing)                                                     |
 
 ## 常见问题
 
@@ -216,17 +226,31 @@ module.exports = {
 ## 周边生态
 
 - [Hexo 引流插件](https://github.com/rqh656418510/hexo-readmore)
+- [VuePress v1 引流插件](https://github.com/rqh656418510/vuepress-plugin-readmore-popular)
 - [VuePress v2 引流插件](https://github.com/rqh656418510/vuepress-plugin-readmore-popular-next)
-- [基于开放引流 API 的 Java 后端项目](https://github.com/rqh656418510/techgrow-openapi-java)
-
-## 开发计划
-
-- [ ] 支持博客的 UV、PV 统计
-- [ ] 在博客的后台管理界面中，支持博客浏览量的图表分析
+- [公众号引流 Java 后端项目](https://github.com/rqh656418510/techgrow-openapi-java)
+- [公众号引流插件的使用案例](https://github.com/rqh656418510/techgrow-blog-demo)
 
 ## 官方微信群
 
 - [微信群二维码](https://www.techgrow.cn/img/wx-group-qr-techgrow.png)
+
+## 技术声明
+
+本项目为开源软件，仅提供 "关注公众号后解锁文章" 等内容访问控制的技术实现。
+
+项目作者不参与、不控制第三方网站的具体使用行为，也不对使用者的行为承担任何法律责任。
+
+使用本软件的用户应当遵守所在国家或地区的法律法规以及相关平台规则，不得将本软件用于任何违法或侵权用途，包括但不限于：
+
+- 传播侵权内容或盗版资源
+- 侵犯他人著作权或知识产权
+- 未经授权收集或滥用用户数据
+- 违反相关平台规则或法律法规的行为
+
+因使用或滥用本软件所产生的一切法律责任，由使用者自行承担。
+
+如果您认为本软件被用于侵犯您的合法权益，请联系相关网站运营者进行处理。
 
 ## License
 
